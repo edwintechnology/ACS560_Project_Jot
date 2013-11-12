@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+	<title> Jot!: Jot our Thoughts </title>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<meta charset="UTF-8" />
+	
+	<script type="text/javascript">
+
+	function signup()
+	{
+		$('#signup').fadeIn();
+		$('#signin').hide();
+		
+		
+		$('#signupBtn').hide();
+		$('#signinBtn').show();
+	}
+	function signin()
+	{
+		$('#signin').fadeIn();
+		$('#signup').hide();
+		$('#signupBtn').show();
+		$('#signinBtn').hide();
+	}
+	function signupAction()
+	{
+		redirect();
+	}
+	function signinAction()
+	{
+	}
+	function redirect()
+	{
+		window.location = "home/index.html";
+	}
+</script>
+<style type="text/css">
+	.login
+	{ 
+		border-radius:5px; 
+		border:1px solid #7f3f28; 
+		padding-left:5px; 
+	}
+	.signup 
+	{ 
+		height:25px; 
+	}
+	body 
+	{ 
+		background-color:#ffffff; 
+		color:#222; 
+	}
+	header 
+	{ 
+		background-color:#ff7f50;
+		border-bottom:2px solid #7f3f28;
+		width:100%; 
+		position:absolute; 
+		left:0; 
+		top:0; 
+		background: -webkit-linear-gradient(top, #ffbfa7 0%,#ff7f50 50%); /* Chrome10+,Safari5.1+ */
+	} 
+	.jot { color:#41A317;}
+	.login-btn 
+	{ 
+		background: -webkit-linear-gradient(top, #ffbfa7 0%,#ff7f50 50%); /* Chrome10+,Safari5.1+ */ 
+		padding:5px; 
+		color:#fff; 
+		border:1px solid #7f3f28;
+		border-radius:5px;
+		font-size:16px;
+		width:200px;
+		height:32px;
+		cursor:pointer;
+		text-shadow:1px 1px #000;
+	}
+	.login-btn:hover
+	{
+		background: -webkit-linear-gradient(top, #ffcbb9 0%,#ff8b61 50%); /* Chrome10+,Safari5.1+ */ 
+	}
+	#container { width:80%; height:450px; margin:0 auto; border:0px solid #ddd; margin-top:100px; }
+</style>
+</head>
+
+<body>
+<!--<header> 
+	<div style="float:left;">
+		<img src="img/jot_logo_tmp.png" alt="temp logo" />
+	</div>
+	<div style="float:right;margin-right:40px;color:#fff;font-size:14pt;font-family:ariel; padding-top:10px;">
+		<table cellspacing="0" cellpadding="0">
+			<tr style="font-size:8pt">
+				<td valign="bottom"> <span class="jot1">e</span>mail </td><td><span class="jot1">p</span>assword</td><td></td>
+			</tr>
+			<tr>
+				<td> <input type="text" name="username" class="login username" /> </td>
+				<td> <input type="password" name="password" class="login password" /> </td>
+				<td> <input type="submit" value="login" class="login-btn" onclick="window.location='home/index.html'" /> </td>
+			</tr>
+		</table>
+	</div>
+	<div style="clear:both;"></div>
+</header>-->
+<div id="container">
+<div style="color:#fff;float:left;padding:10px; padding-left:100px; border:3px outset #162252; width:50%; background-color:#4973AB;">
+ 	<h1 style="font-size:30pt">
+	Quick method for media storage
+	<br />
+	</h1>
+	<p style="font-size:24pt"> Have an idea? Jot it down </p>
+	<p style="font-size:24pt"> Share your idea with others </p>
+	<p style="font-size:24pt"> or Keep to yourself </p>
+	<p style="font-size:24pt"> Manage your thoughts in a quick, reliable fashion </p>
+<p style="font-size:18pt"> ... </p>
+<p style="font-size:18pt"><span class="jot">Jot</span> Our Thoughts</p>
+</div>
+<div style="float:right; padding:10px;">
+	<form method="post" action="php/login.php">
+	<div id="signin" style="display:none;">
+		<h1 style="font-size:30pt"> Sign in! </h1>
+		<table width="100%">
+		<tr>
+			<td> <input type="text" name="user" placeholder="Username" class="login signup" style="width:100%;"  /> </td> 
+		</tr>
+		<tr>
+			<td colspan="2"> <input type="password" placeholder="Password" name="pass" class="login signup" style="width:100%;" /> </td>
+		</tr>
+		<tr>
+		<td colspan="2">
+			<input class="login-btn" type="submit" value="login" />
+		</tr>
+		</table>		
+	</div>
+	</form>
+	<form method="post" action="php/register.php">
+	<div id="signup" style="display:none;">
+	<h1 style="font-size:30pt"> Sign up! </h1>
+	<p style="font-size:24pt"> No fee Media Storage! </p>
+	<table>
+	<tr>
+		<td colspan="2"> <input type="text" name="email_insert" class="login signup" style="width:100%;" placeholder="email address" /> </td>
+	</tr>
+	<tr>
+		<td colspan="2"> <input type="password" name="password_insert" class="login signup" style="width:100%" placeholder="password" /> </td>
+	</tr>
+	<tr>
+		<td colspan="2"> <input type="password" name="password_insert2" class="login signup" style="width:100%" placeholder="confirm password" /> </td>
+	</tr>
+	<tr>
+		<td colspan="2"><input type="submit" class="login-btn" value="sign up"/></td>
+		</tr>
+	</table>
+	</div>
+	</form>
+		<table style="float:right;">
+		<tr>
+		<td valign="top">
+		<input id="signupBtn" type="button" value="Sign up" class="login-btn" style="float:right;" onclick="signup();" /><br />
+		</td>
+		<td valign="top">
+		<input id="signinBtn" type="button" value="Log in" class="login-btn" style="float:right; width:120px;" onclick="signin();"/>
+		</td>
+		</tr>
+		</table>
+</div>
+<div style="clear:both;"></div>
+</div>
+<footer style="font-family: Ariel; width:100%; position: fixed; bottom:0; text-align:center"> Edwin Technology &copy; 2013 </footer>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+<?php //login.php
+
+$url = "http://76.16.117.246/jot/service2.php?wsdl";
+$client = new SoapClient($url);
+
+$username = $_POST["user"];
+$password = $_POST["pass"];
+
+$auth = array("username" => $_POST["user"], "password" => $_POST["pass"]);
+//$result = $client->logon($auth);
+
+//echo $result;
+
+?>
