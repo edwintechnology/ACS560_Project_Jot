@@ -1,0 +1,22 @@
+To download and run the project:
+
+Download the jot folder.  Make sure that you grab everything that is included in the folder
+
+Now when you run it make sure that you open the file "/jot/mobile/index.html"
+
+if you are running under linux just use firefox "/jot/mobile/index.html"
+
+
+there client side is simple for the webpage.
+
+for android/ios is a little bit more tricky..
+
+if you do not have android installed and would like it for your own computer follow
+this tutorial for getting started with android. http://edwintechnologyfw.blogspot.com/2013/11/getting-started-with-android.html
+
+when you have it installed, just import the folder called "Jot" that is inside the jot folder
+this will have the sources for the android application and you can run it from eclipse or the command line
+depending on which way that you install android
+
+the IOS, if you have xcodes (or a mac) you just just open the sources and run the application
+with the simulator as is.
