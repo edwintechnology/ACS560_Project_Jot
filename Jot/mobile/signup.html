@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+<title>Mobile</title>
+<script type="text/javascript">
+	function signup(){
+		var user = $('#user').val();
+		var pass = $('#pass').val();
+		
+		$.post('http://jot.leseonline.net/register_new_user.php', { username: user, password: pass },
+    function(resp, status){ window.location="/jot/mobile/login.html";},'json');	
+	}
+</script>
+<style>
+  .ui-page {
+
+  /* Safari 4-5, Chrome 1-9 */
+  /* Can't specify a percentage size? Laaaaaame. */
+  background: -webkit-gradient(radial, center center, 0, center center, 460, from(#1a82f7), to(#4973AB));
+
+  /* Safari 5.1+, Chrome 10+ */
+  background: -webkit-radial-gradient(circle, #1a82f7, #4973AB);
+
+  /* Firefox 3.6+ */
+  background: -moz-radial-gradient(circle, #1a82f7, #2F2727);
+
+  /* IE 10 */
+  background: -ms-radial-gradient(circle, #1a82f7, #2F2727);
+
+  /* Opera couldn't do radial gradients, then at some point they started supporting the -webkit- syntax, how it kinda does but it's kinda broken (doesn't do sizing) */
+}
+.ui-link { color: white !important; text-decoration: none; text-shadow: 1px 1px #222 !important;}
+.clickable:hover,
+.clickable:hover a:link
+{
+    text-decoration: none; color:white;
+}
+</style>
+</head>
+<body>
+<div data-role="page">
+	<div data-role="content">
+		<div style="margin:0 auto; width:200px; padding-top:100px; text-align:center;">
+			<img src="/jot/img/jot_splash.png" width="100" height="50" >
+			<form>
+				<input id="user" type="text" placeholder="Username" /><br />
+				<input id="pass" type="password" placeholder="Password" /><br />
+				<input type="submit" onclick="signup();" value="Sign up" data-ajax="false" />
+				<a href="login.html" data-ajax="false">Login</a>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>

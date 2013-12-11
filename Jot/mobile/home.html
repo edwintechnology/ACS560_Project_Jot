@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+<title>Mobile</title>
+<script type="text/javascript">
+        $.mobile.allowCrossDomainPages = true
+var items;
+function uploadFile()
+{
+    var sll = window.location.search;
+   if(sll == null)
+       window.location = "/jot/mobile/login.html";
+     var s = sll.split('=');
+
+var token = s[1];
+//special, item_type, annotation, name, size
+var files = document.getElementById("file").files[0];
+
+$.post('http://jot.leseonline.net/addfile.php', { token: token, 'special' : $('#special').val(), 'annotation': $('#annotation').val(),
+"item_type": $('#itemType option:selected').val(), 'name' :files.name, 'size': files.size },
+    function(resp, status){ window.location = '/jot/mobile/home.html' + sll; },'json');	
+}
+ function loadEntities(){
+    var sll = window.location.search;
+   if(sll == null)
+       window.location = "/jot/mobile/login.html";
+     var s = sll.split('=');
+
+var token = s[1];
+   $.post('http://jot.leseonline.net/GetAllKeys.php', { token: token },
+    function(resp, status){ parseList(resp.items);},'json');	
+}
+function parseList(_items){
+  items = _items;
+  var keys = new Array();
+  for(var i = 0; i < items.length; i++)
+  {
+      keys.push(items[i].key);
+  }
+
+   keys.sort();
+
+  for(var j = 0; j < keys.length; j++)
+      $('#list').append("<li>" + keys[j] + "<li>");
+
+  $("#list").listview("refresh");
+}
+window.onload = loadEntities;
+</script>
+<style>
+  .ui-page {
+
+  /* Safari 4-5, Chrome 1-9 */
+  /* Can't specify a percentage size? Laaaaaame. */
+  background: -webkit-gradient(radial, center center, 0, center center, 460, from(#1a82f7), to(#4973AB));
+
+  /* Safari 5.1+, Chrome 10+ */
+  background: -webkit-radial-gradient(circle, #1a82f7, #4973AB);
+
+  /* Firefox 3.6+ */
+  background: -moz-radial-gradient(circle, #1a82f7, #2F2727);
+
+  /* IE 10 */
+  background: -ms-radial-gradient(circle, #1a82f7, #2F2727);
+
+  /* Opera couldn't do radial gradients, then at some point they started supporting the -webkit- syntax, how it kinda does but it's kinda broken (doesn't do sizing) */
+}
+</style>
+</head>
+<body>
+<div id="home" data-role="page">
+	<div data-role="header"> <h1> Jot! </h1> 
+	<a data-role="button" href="#popupAdd"  data-icon="plus" data-rel="popup" data-position-to="window" data-transition="pop">Add</a>
+        <a data-role="button" href="/jot/mobile/login.html" data-icon="delete" data-ajax="false">Logout</a>
+	</div>
+	<div data-role="popup" id="popupAdd" data-theme="a" class="ui-corner-all">
+    <form id="file-attachment-form" enctype="multipart/form-data">
+        <div style="padding:10px 20px;">
+            <h3>Upload a File</h3>
+             Special Name <input type="text" id="special" />
+             Annotation <input type="text" id="annotation" />
+             File Type <select id="itemType"> 
+             <option value="image">Image</option>
+<option value="image">Audio</option>
+<option value="image">Video</option>
+<option value="image">Text</option>
+            <p> <input type="file" id="file" /> <input type="submit" value="Add" data-ajax="false"  />
+ </p>
+        </div>
+    </form>
+<script>
+        $('#file-attachment-form').submit(function () {
+           uploadFile();
+        });
+    </script>
+</div>
+	<div data-role="content">
+	<ul data-role="listview" data-autodividers="true" data-filter="true" data-inset="true" id="list">
+        </ul>	
+	</div>
+</div>
+
+</body>
+</html>
